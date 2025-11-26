@@ -37,16 +37,17 @@ export default async function handler(req, res) {
       }
     );
 
-    if (mailResponse.status === 200) {
-      return res.status(200).send(`Thank you, ${name}! Your message has been sent successfully.`);
-    } else {
-      return res.status(500).send("Error sending email.");
-    }
-  } catch (error) {
-    console.error(error.response ? error.response.data : error.message);
-    return res.status(500).send("Error sending email.");
+ if (mailResponse.status === 200) {
+    return res.status(200).json({ success: true, message: `Thank you, ${name}! Your message has been sent successfully.` });
+  } else {
+    return res.status(500).json({ success: true, message: `Thank you, ${name}! Your message has been sent successfully.` });
   }
+} catch (error) {
+  console.error(error.response ? error.response.data : error.message);
+  return res.status(500).json({ success: false, message: "Error sending email." });
 }
+}
+
 
 
 
