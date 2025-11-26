@@ -10,25 +10,26 @@ export default async function handler(req, res) {
   
   // Send email via Maileroo API
   try {
+    const accountId = process.env.AHASEND_ACCOUNT_ID;
     const mailResponse = await axios.post(
-       "https://smtp.maileroo.com/api/v2/emails",
+       `https://api.ahasend.com/v2/accounts/${accountId}/messages`,
     {
       from: {
-        address: process.env.SENDER_EMAIL,
-        display_name: "Website Contact Form"
+        email: process.env.SENDER_EMAIL,
+        name: "Website Contact Form"
       },
       to: {
-        address: process.env.RECEIVING_EMAIL,
-        display_name: "Site Admin"
+        email: process.env.RECEIVING_EMAIL,
+        name: "Site Admin"
       },
       subject: "New Contact Form Submission",
-      plain: `Name: ${name}\nEmail: ${email}`
+      text_content: `Name: ${name}\nEmail: ${email}`
       // You can also add "html" for rich formatting:
       // html: `<p><strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>Message:</strong> ${message}</p>`
     },
       {
         headers: {
-          Authorization: `Bearer ${process.env.MAILEROO_API_KEY}`,
+          Authorization: `Bearer ${process.env.AHASEND_API_KEY}`,
           "Content-Type": "application/json"
         }
       }
@@ -44,6 +45,7 @@ export default async function handler(req, res) {
     return res.status(500).send("Error sending email.");
   }
 }
+
 
 
 
