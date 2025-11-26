@@ -18,10 +18,12 @@ export default async function handler(req, res) {
         email: process.env.SENDER_EMAIL,
         name: "Website Contact Form"
       },
-      recipients: {
-        email: process.env.RECEIVING_EMAIL,
-        name: "Site Admin"
-      },
+     recipients: [
+          {
+            email: process.env.RECEIVING_EMAIL,
+            name: "Admin"
+          }
+        ],
       subject: "New Contact Form Submission",
       text_content: `Name: ${name}\nEmail: ${email}`
       // You can also add "html" for rich formatting:
@@ -45,6 +47,7 @@ export default async function handler(req, res) {
     return res.status(500).send("Error sending email.");
   }
 }
+
 
 
 
