@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   // Send email via Maileroo API
   try {
     const mailResponse = await axios.post(
-      "https://api.maileroo.com/send",
+       "https://smtp.maileroo.com/api/v2/send",
       {
         from: process.env.SENDER_EMAIL,
         to: process.env.RECEIVING_EMAIL,
