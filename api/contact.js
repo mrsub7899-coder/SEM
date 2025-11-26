@@ -12,12 +12,20 @@ export default async function handler(req, res) {
   try {
     const mailResponse = await axios.post(
        "https://smtp.maileroo.com/api/v2/emails",
-      {
-        from: process.env.SENDER_EMAIL,
-        to: process.env.RECEIVING_EMAIL,
-        subject: "New Contact Form Submission",
-        plain: `Name: ${name}\nEmail: ${email}`
+    {
+      from: {
+        email: process.env.SENDER_EMAIL,
+        name: "Website Contact Form"
       },
+      to: {
+        email: process.env.RECEIVING_EMAIL,
+        name: "Site Admin"
+      },
+      subject: "New Contact Form Submission",
+      text: `Name: ${name}\nEmail: ${email}`
+      // You can also add "html" for rich formatting:
+      // html: `<p><strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>Message:</strong> ${message}</p>`
+    },
       {
         headers: {
           Authorization: `Bearer ${process.env.MAILEROO_API_KEY}`,
@@ -36,4 +44,5 @@ export default async function handler(req, res) {
     return res.status(500).send("Error sending email.");
   }
 }
+
 
