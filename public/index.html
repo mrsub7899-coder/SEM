@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Slave Exchange Marketplace</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <style>
     body {
       margin: 0;
@@ -29,25 +30,35 @@
 
     /* Center text box */
 .center-box {
-	 position: relative;
+  position: relative;
   margin-top: 50px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
+  gap: 20px;
   height: 60vh;
 }
 
 .text-block {
-  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */
-  color: darkgray;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black */ 
   padding: 20px;
   border-radius: 8px;
   max-width: 10000px;
   text-align: center;
+  }
+	  
+.top-box { 
+  color: darkgray;
   font-size: 20px;
   font-family: Poppins;
   font-style: italic;
-}
+  }
+.bottom-box { 
+  color: red;
+  font-size: 100px;
+  font-family: Brush Script MT, Brush Script Std, cursive
+  }  
 
 
     /* Contact form */
@@ -99,7 +110,7 @@
 
   <!-- Center text box -->
   <div class="center-box">
-      <div class="text-block">
+      <div class="text-block top-box">
     <p><b>Welcome to The Slave Exchange Marketplace, your Gateway to Consensual Power Play</b></p>
 <p></p>
 <p>Enter a curated online space where Dominants and submissives connect to explore intense,	real time BDSM dynamics through shared fantasy. Engage in consensual adult experiences 
@@ -110,21 +121,12 @@
 <p></p>
 <p>All interactions are voluntary, ethically negotiated, and strictly between consenting adults (18+). Your limits are respected. Your fantasies are honored on your terms.    </p>
   </div>
+  
+  <div class="text-block bottom-box">
+    Full Website coming soon
+  </div>
   </div>
 
-  <!-- Contact form 
-  <div class="contact-form">
-    <h2>Contact Us</h2>
- <form action="/api/contact" method="POST">
-  <label for="name">Name</label>
-  <input type="text" id="name" name="name" required>
-
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email" required>
-
-  <button type="submit">Send</button>
-</form> -->
-	  
 	  <!-- Contact form -->
 <div class="contact-form">
   <h2>Contact Us</h2>
@@ -208,13 +210,11 @@ window.onclick = (event) => {
   if (event.target === modal) modal.style.display = "none";
 };
 </script>
-  
-<!-- Load reCAPTCHA script -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </div>
 </body>
 </html>
+
 
 
 
