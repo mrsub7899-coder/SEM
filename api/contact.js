@@ -18,7 +18,7 @@ export default async function handler(req, res) {
         email: process.env.SENDER_EMAIL,
         name: "Website Contact Form"
       },
-      to: {
+      recipients: {
         email: process.env.RECEIVING_EMAIL,
         name: "Site Admin"
       },
@@ -45,6 +45,7 @@ export default async function handler(req, res) {
     return res.status(500).send("Error sending email.");
   }
 }
+
 
 
 
