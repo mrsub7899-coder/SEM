@@ -14,15 +14,15 @@ export default async function handler(req, res) {
        "https://smtp.maileroo.com/api/v2/emails",
     {
       from: {
-        email: process.env.SENDER_EMAIL,
-        name: "Website Contact Form"
+        address: process.env.SENDER_EMAIL,
+        display_name: "Website Contact Form"
       },
       to: {
-        email: process.env.RECEIVING_EMAIL,
-        name: "Site Admin"
+        address: process.env.RECEIVING_EMAIL,
+        display_name: "Site Admin"
       },
       subject: "New Contact Form Submission",
-      text: `Name: ${name}\nEmail: ${email}`
+      plain: `Name: ${name}\nEmail: ${email}`
       // You can also add "html" for rich formatting:
       // html: `<p><strong>Name:</strong> ${name}<br><strong>Email:</strong> ${email}<br><strong>Message:</strong> ${message}</p>`
     },
@@ -44,5 +44,6 @@ export default async function handler(req, res) {
     return res.status(500).send("Error sending email.");
   }
 }
+
 
 
